@@ -7,8 +7,30 @@ void VideoPlayer::numberOfVideos() {
             << std::endl;
 }
 
-void VideoPlayer::showAllVideos() {
-  std::cout << "showAllVideos needs implementation" << std::endl;
+void VideoPlayer::showAllVideos()
+{
+    std::cout << "Here's a list of all available videos:" << std::endl;
+    
+
+    for (Video video : mVideoLibrary.getVideos())
+    {
+        std::cout << video.getTitle();
+        std::cout << " (" << video.getVideoId() << ")";
+        std::cout << " [";
+
+        std::vector<std::string> tags = video.getTags();
+
+        for (int i = 0; i < tags.size(); i++)
+        {
+            if (i != 0)
+            {
+                std::cout << " ";
+            }
+            std::cout << tags[i];
+        }
+        std::cout << "]";
+        std::cout << std::endl;
+    }
 }
 
 void VideoPlayer::playVideo(const std::string& videoId) {
